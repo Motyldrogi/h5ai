@@ -64,6 +64,8 @@ configurations).
 
 The MIT License (MIT)
 
+Copyright (c) 2020 Lars Jung (https://larsjung.de)
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -84,8 +86,6 @@ THE SOFTWARE.
 
 
 ## References
-h5ai made by Lars Jung (https://larsjung.de)
-
 **h5ai** profits from other projects, all of them licensed under the MIT license
 too. Exceptions are some [Material Design icons][material-design-icons] (CC BY 4.0).
 
