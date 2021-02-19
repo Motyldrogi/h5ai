@@ -13,6 +13,41 @@ A modern HTTP web server index for Apache httpd, lighttpd, and nginx.
   [project page][web].
 * For bug reports and feature requests please use [issues][github-issues].
 
+## Prerequisites
+- Install PHP and PHP-FPM
+
+## Nginx Conf
+
+```sh
+server {
+    listen 80;
+    index index.php /_h5ai/public/index.php;
+    server_name share.example.com;
+    
+    root /var/www/share.example.com;
+        
+    location /_h5ai/private {
+        return 403;
+    }
+
+    location ~ [^/]\.php(/|$) {
+    fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+    if (!-f $document_root$fastcgi_script_name) {
+        return 404;
+    }
+
+    fastcgi_param HTTP_PROXY "";
+
+    fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    fastcgi_index index.php;
+
+    include fastcgi_params;
+
+    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+    fastcgi_param  PATH_INFO         $fastcgi_path_info;
+    }
+}
+```
 
 ## Build
 
